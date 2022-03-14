@@ -10,7 +10,12 @@ class MoviesController < ApplicationController
   end
 
   def new
-    @movie = Movie.new
+    if current_user.email != "my@mail.com"
+      redirect_to movies_url
+    else
+      @movie = Movie.new
+
+    end
   end
 
   def edit
@@ -32,7 +37,6 @@ class MoviesController < ApplicationController
 
   def update
     respond_to do |format|
-      puts params
       if @movie.update(movie_params)
         format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated." }
         format.json { render :show, status: :ok, location: @movie }

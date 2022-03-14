@@ -8,7 +8,6 @@
     </div>
     <% if @movies %>
       <div id="movies">
-
         <% @movies.each do |movie| %>
           <%= render movie %>
           <p>
@@ -17,6 +16,4 @@
         <% end %>
       </div>
     <% end %>
-
-    <%= link_to "New movie", new_movie_path %>
   <% end %>
