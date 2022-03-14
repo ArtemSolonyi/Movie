@@ -1,3 +1,4 @@
 class Category < ApplicationRecord
-  belongs_to :movie
+  belongs_to :movie, optional: true
+  has_many :movies
 end

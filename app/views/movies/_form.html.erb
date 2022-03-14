@@ -20,7 +20,10 @@
     <%= form.label :text, style: "display: block" %>
     <%= form.text_area :text %>
   </div>
-
+  <div>
+    <%=form.label :category %>
+    <%= form.collection_select :category_id, Category.all, :id, :name%>
+  </div>
   <div>
     <%= form.submit %>
   </div>

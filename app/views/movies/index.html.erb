@@ -1,14 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Movies</h1>
+<div id="categories">
+  <%= form_with url: movies_path, method: :get do |form| %>
+    <%= form.collection_select :id, Category.all, :id, :name, { selected: params[:id] } %>
+    <%= form.submit %>
+    </div>
+    <% if @movies %>
+      <div id="movies">
 
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
+        <% @movies.each do |movie| %>
+          <%= render movie %>
+          <p>
+            <%= link_to "Show this movie", movie %>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <%= link_to "New movie", new_movie_path %>
   <% end %>
-</div>
-
-<%= link_to "New movie", new_movie_path %>
