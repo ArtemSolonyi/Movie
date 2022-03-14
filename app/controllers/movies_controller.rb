@@ -2,12 +2,7 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
 
   def index
-    if params[:id].to_i > 1 && params[:id].to_i < 76
-      category = Category.find(params[:id])
-      @movies = category.movies
-    else
-      @movies = Movie.all
-    end
+
 
   end
 
