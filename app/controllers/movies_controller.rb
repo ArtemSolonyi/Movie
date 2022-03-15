@@ -1,9 +1,12 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
-  before_action :get_access_for_admin_panel, only:%i[ new ]
+  before_action :get_access_for_admin_page, only: %i[ new edit]
+  before_action :set_user, only: %i[ show ]
+
   def index
     @category = Category.find_by(id: params[:id])
     @categories = [Category.new(name: 'All categories')] + Category.all
+
     if !@category
       @movies = Movie.all
     else
@@ -61,9 +64,16 @@ class MoviesController < ApplicationController
   def get_access_for_admin_page
     if current_user.email != "my@mail.com"
       redirect_to movies_url
-    else
-      @movie = Movie.new
     end
+  end
+
+  def set_user
+    if current_user.email == "my@mail.com"
+      @user = true
+    else
+      @user = false
+    end
+
   end
 
   def set_movie
