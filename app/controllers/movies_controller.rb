@@ -2,9 +2,16 @@ class MoviesController < ApplicationController
   before_action :set_movie, only: %i[ show edit update destroy ]
 
   def index
-
-
+    @category = Category.find_by(id:params[:id])
+    @categories = [Category.new(name: 'All categories')] + Category.all
+    p @categories
+    if !@category
+      @movies = Movie.all
+    else
+      @movies = @category.movies
+    end
   end
+
 
   def show
   end

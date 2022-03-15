@@ -3,7 +3,7 @@
 <h1>Movies</h1>
 <div id="categories">
   <%= form_with url: movies_path, method: :get do |form| %>
-    <%= form.collection_select :id, Category.all, :id, :name, { selected: params[:id] } %>
+    <%= form.collection_select :id, @categories, :id, :name, { selected: params[:id] } %>
     <%= form.submit %>
     </div>
     <% if @movies %>
