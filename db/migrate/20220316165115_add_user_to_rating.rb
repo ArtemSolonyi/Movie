@@ -1,0 +1,6 @@
+class AddUserToRating < ActiveRecord::Migration[7.0]
+  def change
+    add_column :ratings, :user_id, :integer
+    add_column :ratings,:movie_id,:integer
+  end
+end

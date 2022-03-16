@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: %i[ show edit update destroy ]
-  before_action :get_access_for_admin_page, only: %i[ new edit]
+  before_action :set_movie, only: %i[ show edit update destroy set_movie_rating ]
+  before_action :set_access_for_admin_page, only: %i[ new edit]
   before_action :set_user, only: %i[ show ]
 
   def index
@@ -15,11 +15,10 @@ class MoviesController < ApplicationController
   end
 
   def show
-
   end
 
   def new
-
+    @movie = Movie.new
   end
 
   def edit
@@ -27,7 +26,6 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
-
     respond_to do |format|
       if @movie.save
         format.html { redirect_to movie_url(@movie), notice: "Movie was successfully created." }
@@ -39,8 +37,9 @@ class MoviesController < ApplicationController
     end
   end
 
+
   def update
-    p params
+
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to movie_url(@movie), notice: "Movie was successfully updated." }
@@ -61,9 +60,19 @@ class MoviesController < ApplicationController
     end
   end
 
+  def set_movie_rating
+    movie = @movie.ratings.find_or_create_by(user_id: current_user.id)
+    movie.rating = params[:rating]
+    movie.save
+    @movie.rating_total =((@movie.ratings.each.sum { |n| p n.rating }).to_f / (@movie.ratings.length).to_f)
+    @movie.save
+
+
+  end
+
   private
 
-  def get_access_for_admin_page
+  def set_access_for_admin_page
     if current_user.email != "my@mail.com"
       redirect_to movies_url
     end
@@ -82,7 +91,6 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    puts params
-    params.require(:movie).permit(:title, :text, :category_id)
+    params.require(:movie).permit(:title, :text, :category_id,)
   end
 end
