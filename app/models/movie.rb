@@ -1,7 +1,7 @@
 class Movie < ApplicationRecord
   belongs_to :category, optional: true
   has_many :category
-  has_one :rating
+  has_many :rating
   extend FriendlyId
   friendly_id :title, use: :slugged
 end

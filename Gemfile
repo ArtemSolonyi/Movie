@@ -14,7 +14,8 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "bootsnap", require: false
 gem 'friendly_id', '~> 5.4.0'
 gem 'devise'
-
+gem 'sassc-rails'
+gem 'jquery-rails'
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
