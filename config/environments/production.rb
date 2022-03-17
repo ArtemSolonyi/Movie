@@ -64,7 +64,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  config.assets.css_compressor = :yui
+
   config.assets.js_compressor = :terser
 
   # Ignore bad email addresses and do not raise email delivery errors.
