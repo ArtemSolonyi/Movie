@@ -1,21 +1,12 @@
-<div class="container d-flex justify-content-center mt-200">
-  <div class="row">
-    <div class="col-md-12">
-      <div id="stars" data-controller="rating" data-action="input->rating#greet" class="stars">
+
+      <div id="stars" class="form-stars" data-controller="rating" data-action="input->rating#greet">
         <%= form_for @movie, remote: true do |f| %>
-          <input id="movie_path" value="<%= movie_path @movie %>/rating" hidden>
-          <%= f.radio_button :ratings, '1', class: "star star-5" %>
-          <label class="star star-5" for="star-5"></label>
-          <%= f.radio_button :ratings, '2', class: "star star-4" %>
-          <label class="star star-4" for="star-4"></label>
-          <%= f.radio_button :ratings, '3', class: "star star-3" %>
-          <label class="star star-3" for="star-3"></label>
-          <%= f.radio_button :ratings, '4', class: "star star-2" %>
-          <label class="star star-2" for="star-2"></label>
-          <%= f.radio_button :ratings, '5', class: "star star-1" %>
-          <label class="star star-1" for="star-1"></label>
+          <div class="rating">
+            <input id="movie_path" value="<%= movie_path @movie %>/rating" hidden>
+            <% 10.downto(1) do |i| %>
+              <input type="radio" name="rating" value="<%= i %>" id=<%= i %>>
+              <label for=<%= i %>>☆</label>
+            <% end %>
         <% end %>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
