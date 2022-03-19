@@ -1,7 +1,19 @@
 <div class="container">
 <p style="color: green"><%= notice %></p>
 
-<%= render @movie %>
+  <div id="<%= dom_id @movie %>">
+    <p>
+      <h><%= image_tag  @movie.image,:width => 400,:height => 500%></h>
+      <strong>Title:</strong>
+      <%= @movie.title %>
+    </p>
+    <p>
+      <strong>Text:</strong>
+      <%= @movie.text %>
+    </p>
+
+  </div>
+
 <%=render 'rating'%>
 
 

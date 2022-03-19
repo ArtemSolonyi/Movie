@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: %i[ show edit update destroy  set_movie_rating ]
+  before_action :set_movie, only: %i[  edit update destroy show set_movie_rating]
   before_action :set_access_for_admin_page, only: %i[ new edit]
   before_action :set_user, only: %i[ show ]
 
@@ -17,6 +17,7 @@ class MoviesController < ApplicationController
   def show
   end
 
+
   def new
     @movie = Movie.new
   end
@@ -26,6 +27,7 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
+
     respond_to do |format|
       if @movie.save
         format.html { redirect_to movie_url(@movie), notice: "Movie was successfully created." }
@@ -60,12 +62,13 @@ class MoviesController < ApplicationController
   end
 
   def set_movie_rating
-    @movie = Movie.joins(:ratings).group("ratings.user_id","ratings.movie_id").friendly.find(params[:id])
     movie = @movie.ratings.find_or_create_by!(user_id: current_user.id)
     movie.rating = params[:rating]
     movie.save
     @movie.rating_total = (((@movie.ratings.each.sum { |n| p n.rating }).to_f)/ (@movie.ratings.length).to_f)
     @movie.save
+
+
     respond_to do |format|
       format.js { render partial: 'layouts/rating' }
     end
@@ -93,6 +96,6 @@ class MoviesController < ApplicationController
 
 
   def movie_params
-    params.require(:movie).permit(:title, :text, :category_id,)
+    params.require(:movie).permit(:title, :text, :category_id,:image)
   end
 end

@@ -2,13 +2,13 @@
   <h><%= @movie.rating_total %></h>
 </div>
 <div id="stars" class="form-stars" data-controller="rating" data-action="input->rating#greet">
-  <%= form_for @movie, remote: true do |f| %>
+
     <div class="rating">
       <input id="movie_path" value="<%= movie_path @movie %>/rating" hidden>
       <% 10.downto(1) do |i| %>
         <input type="radio" name="rating" value="<%= i %>" id=<%= i %>>
         <label for=<%= i %>>☆</label>
       <% end %>
-  <% end %>
+
   </div>
 </div>

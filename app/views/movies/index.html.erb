@@ -1,19 +1,10 @@
 <p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="container">
+      <%=render 'navbar' %>
+        <%=render 'movies' %>
+        </div>
 
-<h1>Movies</h1>
-<div id="categories">
-  <%= form_with url: movies_path, method: :get do |form| %>
-    <%= form.collection_select :id, @categories, :id, :name, { selected: params[:id] } %>
-    <%= form.submit %>
-    </div>
-    <% if @movies %>
-      <div id="movies">
-        <% @movies.each do |movie| %>
-          <%= render movie %>
-          <p>
-            <%= link_to "Show this movie", movie %>
-          </p>
-        <% end %>
+
       </div>
-    <% end %>
-  <% end %>
+

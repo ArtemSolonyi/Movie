@@ -1,0 +1,12 @@
+<% if @movies %>
+  <div id="movies">
+    <div class="row">
+      <% @movies.each do |movie| %>
+        <div class="col-auto">
+          <%= render movie %>
+          <%= link_to movie.title, movie, class:'link_to' %><br>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
