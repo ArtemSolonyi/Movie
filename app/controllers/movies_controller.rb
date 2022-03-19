@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[  edit update destroy show set_movie_rating]
+  before_action :is_authorized?
   before_action :set_access_for_admin_page, only: %i[ new edit]
   before_action :set_user, only: %i[ show ]
 
@@ -76,6 +77,11 @@ class MoviesController < ApplicationController
 
   private
 
+  def is_authorized?
+    if !current_user
+      redirect_to new_user_session_path
+    end
+  end
   def set_access_for_admin_page
     if current_user.email != "my@mail.com"
       redirect_to movies_url

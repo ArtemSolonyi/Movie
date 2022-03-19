@@ -59,13 +59,13 @@
 a {
     text-decoration: none;
     font-family: Arial;
-    color:black;
+    color: black;
 
     font-size: 20px;
     font-weight: bold;
 }
 body {
-    background: #e7e687;
+    background: #d0d0a9;
 }
 .link-login{
     text-decoration: none;
