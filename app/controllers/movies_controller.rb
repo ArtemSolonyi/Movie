@@ -63,10 +63,10 @@ class MoviesController < ApplicationController
   end
 
   def set_movie_rating
-    movie = @movie.ratings.find_or_create_by!(user_id: current_user.id)
+    movie = @movie.rating.find_or_create_by!(user_id: current_user.id)
     movie.rating = params[:rating]
     movie.save
-    @movie.rating_total = (((@movie.ratings.each.sum { |n| p n.rating }).to_f)/ (@movie.ratings.length).to_f)
+    @movie.rating_total = (((@movie.rating.each.sum { |n| p n.rating }).to_f)/ (@movie.rating.length).to_f)
     @movie.save
 
 
