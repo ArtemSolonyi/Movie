@@ -4,5 +4,5 @@ import "app/javascript/controllers"
 //= require jquery_ujs
 //= require jquery
 //=require turbolinks
-//=require controllers/starrating.js
+//=require controllers/rating.js
 //= require_tree .
