@@ -73,3 +73,7 @@ body {
     position:relative;
     left: 90%;
 }
+.position_add {
+    position: relative;
+    padding-bottom: 20px;
+}

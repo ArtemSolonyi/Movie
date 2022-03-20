@@ -14,25 +14,32 @@
           <div id="categories">
             <%= form_with url: movies_path, method: :get do |form| %>
               <%= form.collection_select :id, @categories, :id, :name, { selected: params[:id] } %>
-
-          </div>
-        </li>
-        <li class="nav-item"> <a class="nav-link">
-          <%= form.submit 'Switch',class:"btn btn-primary" %>
+              </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link">
+                  <%= form.submit 'Switch', class: "btn btn-primary" %>
             <% end %></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">
-            <% if user_signed_in? %>
-              <%= button_to "Log out", destroy_user_session_path, method: :delete,class:"btn btn-danger"%>
-            <% else %>
-              <%= link_to 'Log in', new_user_session_path,class:"btn btn-success" %>
-            <% end %></a>
-        </li>
-        <li class="nav-item dropdown">
+            </li>
 
-        </li>
-      </ul>
+            <li class="nav-item">
+              <a class="nav-link">
+                <% if user_signed_in? %>
+                  <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+                <% else %>
+                  <%= link_to 'Log in', new_user_session_path, class: "btn btn-success" %>
+                <% end %></a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link">
+
+                <% if current_user.email == "my@mail.com" %>
+                  <%= link_to '+ Add Movie', '/movies/new', class: "btn btn-warning position_add" %>
+              <% end %></a>
+            </li>
+
+            </ul>
     </div>
   </nav>
 </div>
