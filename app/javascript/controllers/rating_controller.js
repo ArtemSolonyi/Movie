@@ -1,4 +1,4 @@
-// src/controllers/starrating.js
+// src/controllers/rating.js
 import {Controller} from "@hotwired/stimulus"
 
 
