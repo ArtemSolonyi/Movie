@@ -1,6 +1,6 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[  edit update destroy show set_movie_rating]
-  before_action :is_authorized?
+
   before_action :set_access_for_admin_page, only: %i[ new edit]
   before_action :set_user, only: %i[ show ]
 
@@ -17,7 +17,6 @@ class MoviesController < ApplicationController
 
   def show
   end
-
 
   def new
     @movie = Movie.new
@@ -66,9 +65,8 @@ class MoviesController < ApplicationController
     movie = @movie.rating.find_or_create_by!(user_id: current_user.id)
     movie.rating = params[:rating]
     movie.save
-    @movie.rating_total = (((@movie.rating.each.sum { |n| p n.rating }).to_f)/ (@movie.rating.length).to_f)
+    @movie.rating_total = (((@movie.rating.each.sum { |n| p n.rating }).to_f) / (@movie.rating.length).to_f)
     @movie.save
-
 
     respond_to do |format|
       format.js { render partial: 'layouts/rating' }
@@ -77,31 +75,29 @@ class MoviesController < ApplicationController
 
   private
 
-  def is_authorized?
-    unless current_user
-      redirect_to new_user_session_path
-    end
-  end
   def set_access_for_admin_page
-    if current_user.email != "my@mail.com"
-      redirect_to movies_url
+    if current_user
+      if current_user.email != "my@mail.com"
+        redirect_to movies_url
+      end
+    end
+    end
+
+    def set_user
+      if current_user
+        if current_user.email == "my@mail.com"
+          @user = true
+        else
+          @user = false
+        end
+      end
+    end
+
+    def set_movie
+      @movie = Movie.friendly.find(params[:id])
+    end
+
+    def movie_params
+      params.require(:movie).permit(:title, :text, :category_id, :url)
     end
   end
-
-  def set_user
-    if current_user.email == "my@mail.com"
-      @user = true
-    else
-      @user = false
-    end
-  end
-
-  def set_movie
-    @movie = Movie.friendly.find(params[:id])
-  end
-
-
-  def movie_params
-    params.require(:movie).permit(:title, :text, :category_id,:url)
-  end
-end

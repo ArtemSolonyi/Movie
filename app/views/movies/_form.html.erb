@@ -21,12 +21,12 @@
     <%= form.text_area :text %>
   </div>
   <div>
-    <%=form.label :category,style: "display: block"%>
-    <%= form.collection_select :category_id, Category.all, :id, :name%>
+    <%= form.label :category, style: "display: block" %>
+    <%= form.collection_select :category_id, Category.all, :id, :name %>
   </div>
   <div>
-    <%=form.label :url,style: "display: block"%>
-    <%=form.text_field :url %>
+    <%= form.label :url, style: "display: block" %>
+    <%= form.text_field :url %>
   </div>
   <div>
     <%= form.submit %>

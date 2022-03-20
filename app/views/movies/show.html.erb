@@ -3,7 +3,6 @@
 
   <div id="<%= dom_id @movie %>">
     <p>
-
    <%=image_tag(@movie.url,:width => 300,:height=>400)%>
       <strong>Title:</strong>
       <%= @movie.title %>
@@ -13,9 +12,11 @@
       <%= @movie.text %>
     </p>
 
-  </div>
+
 
 <%=render 'rating'%>
+  </div>
+</div>
 
 
 
