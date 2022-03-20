@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_20_181430) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_20_182319) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -75,8 +75,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_20_181430) do
     t.float "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.integer "movie_id"
+    t.integer "user_id"
+    t.index ["movie_id"], name: "index_ratings_on_movie_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,4 +97,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_20_181430) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "movies", "categories"
   add_foreign_key "movies", "ratings"
+  add_foreign_key "ratings", "movies"
+  add_foreign_key "ratings", "users"
 end
