@@ -25,10 +25,6 @@
     <%= form.collection_select :category_id, Category.all, :id, :name%>
   </div>
   <div>
-    <%=form.label :image %>
-    <%=form.file_field :image %>
-  </div>
-  <div>
     <%= form.submit %>
   </div>
 <% end %>
