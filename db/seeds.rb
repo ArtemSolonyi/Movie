@@ -5,18 +5,18 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-categories = %w[All
+categories = %w[
 Anime
 Biographical
-Action movie
-Western film
+Action
+Western
 Military
 Detective
 Children's
 Documentary
 Drama
 Рistorical
-Movie comic
+Movie
 Comedy
 Concert
 Short
@@ -29,10 +29,10 @@ Musical
 Scientific
 Noir
 Adventures
-Reality show
+Reality
 Family
 Sport
-Talk show
+Talk
 Thriller
 Horror
 Fiction

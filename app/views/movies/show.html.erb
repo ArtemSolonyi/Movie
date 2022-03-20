@@ -3,7 +3,8 @@
 
   <div id="<%= dom_id @movie %>">
     <p>
-<!--      <h><%#= image_tag  @movie.image,:width => 400,:height => 500%></h>-->
+
+   <%=image_tag(@movie.url,:width => 300,:height=>400)%>
       <strong>Title:</strong>
       <%= @movie.title %>
     </p>
