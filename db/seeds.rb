@@ -43,3 +43,4 @@ Erotica
 categories.each do |c|
   Category.create!(name:c)
 end
+

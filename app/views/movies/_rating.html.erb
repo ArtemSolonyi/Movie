@@ -1,5 +1,5 @@
 <div id="rating">
-  <h>Rating:  <%= @movie.rating_total.ceil(1) %>/10</h>
+  <h>Rating:  <%= @movie.rating_total%>/10</h>
 </div>
 <div id="stars" class="form-stars" data-controller="rating" data-action="input->rating#greet">
   <div class="rating">
