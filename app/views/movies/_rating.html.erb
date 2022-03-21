@@ -1,17 +1,12 @@
 <div id="rating">
   <h>Rating:  <%= @movie.rating_total.ceil(1) %>/10</h>
-
+</div>
 <div id="stars" class="form-stars" data-controller="rating" data-action="input->rating#greet">
   <div class="rating">
     <input id="movie_path" value="<%= movie_path @movie %>/rating" hidden>
-    <% if !user_signed_in?%>
-      <p style="padding-left: 107px">If you want to rate a movie,please <%=link_to 'Log in','users/sign_in'%></p>
-    <% else %>
-      <% 10.downto(1) do |i| %>
-        <input type="radio" name="rating" value="<%= i %>" id=<%= i %>>
-        <label for=<%= i %>>☆</label>
-      <% end %>
+    <% 10.downto(1) do |i| %>
+      <input type="radio" name="rating" value="<%= i %>" id=<%= i %>>
+      <label for=<%= i %>>☆</label>
     <% end %>
   </div>
-</div>
 </div>
