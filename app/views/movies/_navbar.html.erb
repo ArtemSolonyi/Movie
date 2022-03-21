@@ -1,8 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href=""><%= image_tag ("m-logo-512x512.png"), width: 15, height: 100, class: "brand_logo" %></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
@@ -15,14 +12,16 @@
         <% end %>
         </a>
         </li>
-
         <li class="nav-item">
-          <a class="nav-link">
-            <% if user_signed_in? %>
+          <% if user_signed_in? %>
+            <a class="nav-link">
               <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
-            <% else %>
-              <%= link_to 'Log in', new_user_session_path, class: "btn btn-success" %>
-            <% end %></a>
+          <% else %>
+            <a class="nav-link position_add">
+              <%= link_to 'Log in', new_user_session_path, class: " btn btn-success" %>
+          <% end %>
+          </a>
+          </a>
         </li>
         <% if current_user %>
           <li class="nav-item ">
@@ -30,7 +29,6 @@
               <%= link_to_if current_user.email == "my@mail.com", '+ Add Movie', { controller: "movies", action: :new }, class: "btn btn-warning " %>
             </a>
         <% end %>
-
         </li>
         </ul>
   </div>

@@ -1,20 +1,24 @@
 <div class="container">
-<p style="color: green"><%= notice %></p>
-
+  <p style="color: green"><%= notice %></p>
   <div id="<%= dom_id @movie %>">
     <p>
-   <%=image_tag(@movie.url,:width => 300,:height=>400)%>
-      <strong>Title:</strong>
-      <%= @movie.title %>
+      <%= image_tag(@movie.url, :width => 300, :height => 400) %>
     </p>
     <p>
-      <strong>Text:</strong>
+      <strong>Title:</strong>
+      <%= @movie.title %><br>
+      <strong>Description:</strong>
       <%= @movie.text %>
     </p>
+    <%= render 'rating' %>
+    <%= link_to "Back to movies", movies_path %>
+    <% if @user %>
+      <div>
+        <%= link_to "Edit this movie", edit_movie_path(@movie) %>
+        <%= button_to "Destroy this movie", @movie, method: :delete %>
+      </div>
+    <% end %>
 
-
-
-<%=render 'rating'%>
   </div>
 </div>
 
@@ -25,15 +29,3 @@
 
 
 
-<%= link_to "Back to movies", movies_path %>
-
-
-
-
-
-<% if @user %>
-  <div>
-    <%= link_to "Edit this movie", edit_movie_path(@movie) %>
-    <%= button_to "Destroy this movie", @movie, method: :delete %>
-  </div>
-<% end %>
