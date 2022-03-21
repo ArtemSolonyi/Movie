@@ -3,6 +3,7 @@ class Movie < ApplicationRecord
   has_many :category
   has_many :rating
 
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 end

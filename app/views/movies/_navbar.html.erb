@@ -1,41 +1,37 @@
-
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Movies</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <div id="categories">
-            <%= form_with url: movies_path, method: :get do |form| %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href=""><%= image_tag ("m-logo-512x512.png"), width: 15, height: 100, class: "brand_logo" %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <%= form_with url: movies_path, method: :get do |form| %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">
               <%= form.collection_select :id, @categories, :id, :name, { selected: params[:id] } %>
-              </div>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">
-                  <%= form.submit 'Switch', class: "btn btn-primary" %>
+              <%= form.submit 'Switch', class: "btn btn-primary" %>
+        <% end %>
+        </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link">
+            <% if user_signed_in? %>
+              <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+            <% else %>
+              <%= link_to 'Log in', new_user_session_path, class: "btn btn-success" %>
             <% end %></a>
-            </li>
+        </li>
+        <% if current_user %>
+          <li class="nav-item ">
+            <a class="nav-link position_add">
+              <%= link_to_if current_user.email == "my@mail.com", '+ Add Movie', { controller: "movies", action: :new }, class: "btn btn-warning " %>
+            </a>
+        <% end %>
 
-            <li class="nav-item">
-              <a class="nav-link">
-                <% if user_signed_in? %>
-                  <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
-                <% else %>
-                  <%= link_to 'Log in', new_user_session_path, class: "btn btn-success" %>
-                <% end %></a>
-            </li>
-            <% if current_user %>
-            <li class="nav-item">
-              <a class="nav-link">
-
-                  <% if current_user.email == "my@mail.com" %>
-                    <%= link_to '+ Add Movie', '/movies/new', class: "btn btn-warning position_add" %>
-                  <% end %></a>
-                <% end %>
-                </li>
-            </ul>
-    </div>
-  </nav>
+        </li>
+        </ul>
+  </div>
+</nav>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_20_175751) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_21_145808) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_20_175751) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
-    t.float "rating_total"
+    t.float "rating_total", default: 0.0
     t.text "url"
     t.integer "category_id"
     t.integer "rating_id"

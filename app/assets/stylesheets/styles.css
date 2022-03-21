@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  */
-
+.position_add {
+    position: relative;
+    padding-top:240px;
+}
 .rating {
 
     display: flex;
@@ -29,7 +32,7 @@
     position: relative;
     width: 0.8em;
     font-size: 2vw;
-    color: #ff0044;
+    color: #1d5093;
     cursor: pointer
 }
 
@@ -58,7 +61,7 @@
 }
 a {
     text-decoration: none;
-    font-family: Arial;
+
     color: black;
 
     font-size: 15px;
@@ -75,5 +78,5 @@ body {
 }
 .position_add {
     position: relative;
-    padding-bottom: 20px;
+    padding-top: 0px;
 }
