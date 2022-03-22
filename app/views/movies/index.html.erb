@@ -1,10 +1,10 @@
 <p style="color: green"><%= notice %></p>
 <div class="container">
 
-      <%=render 'navbar' %>
-        <%=render 'movies' %>
+  <%= render 'navbar' %>
+  <%= render 'movies' %>
 
+    <%= will_paginate @movies , renderer: BootstrapPagination::Rails %>
 
-
-      </div>
+</div>
 

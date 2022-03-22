@@ -1,18 +1,12 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[  edit update destroy show set_movie_rating]
-
   before_action :set_access_for_admin_page, only: %i[ new edit]
   before_action :set_user, only: %i[ show ]
 
   def index
     @category = Category.find_by(id: params[:id])
     @categories = [Category.new(name: 'All categories')] + Category.all
-
-    if !@category
-      @movies = Movie.all
-    else
-      @movies = @category.movies
-    end
+    @movies = (@category&.movies || Movie.all).paginate(page: params[:page],per_page: 2)
   end
 
   def show

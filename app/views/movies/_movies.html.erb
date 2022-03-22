@@ -1,12 +1,14 @@
-<% if @movies %>
+<% if @movies.any? %>
   <div id="movies">
     <div class="row">
       <% @movies.each do |movie| %>
         <div class="col-auto">
           <%= render movie %>
-          <%= link_to movie.title, movie, class:'link_to' %><br>
+          <%= link_to movie.title, movie, class: 'link_to' %><br>
         </div>
       <% end %>
     </div>
   </div>
+<% else %>
+  <h3>В данной категории нет фильмов</h3>
 <% end %>
