@@ -6,7 +6,7 @@ class MoviesController < ApplicationController
   def index
     @category = Category.find_by(id: params[:id])
     @categories = [Category.new(name: 'All categories')] + Category.all
-    @movies = (@category&.movies || Movie.all).paginate(page: params[:page],per_page: 5)
+    @movies = (@category&.movies || Movie.all).paginate(page: params[:page], per_page: 5)
   end
 
   def show
@@ -73,23 +73,23 @@ class MoviesController < ApplicationController
         redirect_to movies_url
       end
     end
-    end
+  end
 
-    def set_user
-      if current_user
-        if current_user.email == "my@mail.com"
-          @user = true
-        else
-          @user = false
-        end
+  def set_user
+    if current_user
+      if current_user.email == "my@mail.com"
+        @user = true
+      else
+        @user = false
       end
     end
-
-    def set_movie
-      @movie = Movie.friendly.find(params[:id])
-    end
-
-    def movie_params
-      params.require(:movie).permit(:title, :text, :category_id, :url)
-    end
   end
+
+  def set_movie
+    @movie = Movie.friendly.find(params[:id])
+  end
+
+  def movie_params
+    params.require(:movie).permit(:title, :text, :category_id, :url)
+  end
+end

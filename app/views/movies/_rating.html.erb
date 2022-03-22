@@ -1,12 +1,21 @@
 <div id="rating">
-  <h>Rating:  <%= @rating_total%>/10</h>
+  <h3>Rating:
+    <% if @rating_total.nil? %>
+      0/10
+    <% else %>
+      <%= @rating_total %>/10
+    <% end %></h3>
 </div>
-<div id="stars" class="form-stars" data-controller="rating" data-action="input->rating#greet">
-  <div class="rating">
-    <input id="movie_path" value="<%= movie_path @movie %>/rating" hidden>
-    <% 10.downto(1) do |i| %>
-      <input type="radio" name="rating" value="<%= i %>" id=<%= i %>>
-      <label for=<%= i %>>☆</label>
-    <% end %>
+<% if current_user %>
+  <div id="stars" class="form-stars" data-controller="rating" data-action="input->rating#greet">
+    <div class="rating">
+      <input id="movie_path" value="<%= movie_path @movie %>/rating" hidden>
+      <% 10.downto(1) do |i| %>
+        <input type="radio" name="rating" value="<%= i %>" id=<%= i %>>
+        <label for=<%= i %>>☆</label>
+      <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  <h4> Login to rate  <%= link_to 'Log in', new_user_session_path, class: "btn btn-success" %> </h4>
+<% end %>
