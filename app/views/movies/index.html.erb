@@ -4,10 +4,9 @@
 
 
   <%= render 'navbar' %>
+
   <%= render 'movies' %>
 
-  <div class="pagination">
-    <%= will_paginate @movies, renderer: WillPaginate::ActionView::LinkRenderer %>
-  </div>
-</div>
+      <%= will_paginate %>
+    </div>
 
