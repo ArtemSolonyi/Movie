@@ -17,7 +17,7 @@ gem 'devise'
 gem 'sassc-rails'
 gem 'jquery-rails'
 gem 'will_paginate'
-gem "will_paginate-bootstrap"
+gem 'will_paginate-bootstrap4'
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end

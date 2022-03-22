@@ -6,10 +6,11 @@ class MoviesController < ApplicationController
   def index
     @category = Category.find_by(id: params[:id])
     @categories = [Category.new(name: 'All categories')] + Category.all
-    @movies = (@category&.movies || Movie.all).paginate(page: params[:page],per_page: 2)
+    @movies = (@category&.movies || Movie.all).paginate(page: params[:page],per_page: 5)
   end
 
   def show
+    @rating_total = @movie.ratings.average(:rating)
   end
 
   def new
@@ -55,12 +56,10 @@ class MoviesController < ApplicationController
   end
 
   def set_movie_rating
-    movie = @movie.rating.find_or_create_by!(user_id: current_user.id)
-    movie.rating = params[:rating]
-    movie.save
-    @movie.rating_total = (((@movie.rating.each.sum { |n| p n.rating }).to_f) / (@movie.rating.length).to_f)
-    @movie.save
-
+    rating = @movie.ratings.find_or_create_by!(user_id: current_user.id)
+    rating.rating = params[:rating]
+    rating.save
+    @rating_total = @movie.ratings.average(:rating)
     respond_to do |format|
       format.js { render partial: 'layouts/rating' }
     end
