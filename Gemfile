@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
 group :development, :test do
+  gem "rspec-rails"
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
@@ -33,6 +34,8 @@ end
 
 group :test do
   gem "capybara"
+  gem "factory_bot_rails"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem 'shoulda-matchers'
 end
