@@ -3,7 +3,7 @@
     <% if @rating_total.nil? %>
       0/10
     <% else %>
-      <%= @rating_total %>/10
+      <%= @rating_total.ceil(1) %>/10
     <% end %></h3>
 </div>
 <% if current_user %>

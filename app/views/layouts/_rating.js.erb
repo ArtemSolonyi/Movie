@@ -1,1 +1,1 @@
-document.getElementById('rating').innerHTML = '<h3> Rating: <%= @rating_total %>/10 </h3>'
+document.getElementById('rating').innerHTML = '<h3> Rating: <%= @rating_total.ceil(1) %>/10 </h3>'

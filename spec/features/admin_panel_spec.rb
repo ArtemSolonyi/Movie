@@ -42,6 +42,6 @@ RSpec.feature "Admin can" do
     login_as(user)
     visit '/movies/new'
     click_link "Back to movies"
-    expect(page).to root_path
+    expect(visit root_path)
   end
 end
