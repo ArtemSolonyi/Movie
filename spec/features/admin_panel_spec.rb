@@ -1,11 +1,14 @@
 require "rails_helper"
 RSpec.feature "Admin can" do
-  user = User.first
-
+  puts Category.all
+  user = User.find_by(email: "my@mail.com")
+  before do
+    puts Category.all
+  end
   scenario "click to login link" do
     visit '/'
     click_link "Log in"
-    expect(visit '/users/sign_in')
+    expect(page).to have_button "Log in"
   end
 
   scenario "fill fields to login" do
@@ -33,7 +36,7 @@ RSpec.feature "Admin can" do
     visit '/movies/new'
     fill_in "movie[title]", :with => "SpiderMan"
     fill_in "movie[text]", :with => "Description Movie"
-    select "Anime", from:"movie_category_id"
+    select "Anime", from: "movie_category_id"
     fill_in "movie[url]", :with => "https://thumbs.dfs.ivi.ru/storage28/contents/2/8/eae4a27c3d94ac97a6e69e66b4b6c0.jpg"
     click_button "Create Movie"
     expect(page).to have_content "Movie was successfully created."
@@ -42,6 +45,6 @@ RSpec.feature "Admin can" do
     login_as(user)
     visit '/movies/new'
     click_link "Back to movies"
-    expect(visit root_path)
+    expect(page).to have_link "MoviesCenter"
   end
 end

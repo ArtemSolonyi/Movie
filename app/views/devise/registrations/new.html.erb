@@ -1,4 +1,3 @@
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -19,7 +18,7 @@
     <div class="user_card">
       <div class="d-flex justify-content-center">
         <div class="brand_logo_container" style="background: white;!important;">
-          <%= image_tag ("m-logo-512x512.png"), class:"brand_logo" %>
+          <%= image_tag ("m-logo-512x512.png"), class: "brand_logo" %>
         </div>
       </div>
       <div class="d-flex justify-content-center form_container">
@@ -28,31 +27,32 @@
             <div class="input-group-append">
               <span class="input-group-text"><i class="fas fa-user"></i></span>
             </div>
-            <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control input_user",placeholder:"email" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control input_user", placeholder: "email" %>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-append">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
-            <%= f.password_field :password, autocomplete: "new-password",class:"form-control input_user",placeholder:"password"%>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control input_user", placeholder: "password" %>
           </div>
           <div class="input-group mb-2">
             <div class="input-group-append">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
-            <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control input_user",placeholder:"password confirmation"%>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control input_user", placeholder: "password confirmation" %>
           </div>
           <div class="form-group">
             <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="customControlInline">
-
+              <div class="d-flex justify-content-center mt-3 login_container">
+                <p class="notice"><%= notice %></p>
+                <p class="alert"><%= alert %></p>
+              </div>
             </div>
           </div>
           <div class="d-flex justify-content-center mt-3 login_container">
-            <%= f.submit "Sign up",class:"btn login_btn"%>
-
+            <%= f.submit "Sign up", class: "btn login_btn" %>
           </div>
-          <div><%= link_to 'Log in', new_user_session_path,class:"link-login" %></div>
+          <div><%= link_to 'Log in', new_user_session_path, class: "link-login" %></div>
         <% end %>
       </div>
 
