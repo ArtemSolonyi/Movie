@@ -2,6 +2,7 @@ require "rails_helper"
 require "wait_ajax_helper"
 
 RSpec.feature "Registred User can" do
+  Capybara.default_driver = :selenium
   before do
     Movie.destroy_all
     User.destroy_all
