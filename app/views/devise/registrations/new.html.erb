@@ -1,5 +1,3 @@
-
-
 <head>
   <title>My Awesome Login Page</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -37,23 +35,21 @@
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control input_user", placeholder: "password confirmation" %>
-
           </div>
-          <div class="btn-warning warning-form">
-
+          <div class="warning-form">
+            <%= render 'devise/shared/error_messages' %>
           </div>
-          <div class="form-group">
-
-            <div class="custom-control custom-checkbox">
-              <div class="d-flex justify-content-center mt-3 login_container">
-              </div>
-            </div>
-          </div>
-
-            <%= f.submit "Sign up", class: "btn login_btn" %>
-          </div>
-          <div><%= link_to 'Log in', new_user_session_path, class: "link-login" %></div>
+          <%= f.submit "Sign up", class: "btn login_btn" %>
+          <div>
+            <div class="form-group">
+              <%= link_to 'Log in', new_user_session_path, class: "link-login" %>
         <% end %>
+        <div class="d-flex justify-content-center mt-3 login_container">
+        </div>
+        </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
+

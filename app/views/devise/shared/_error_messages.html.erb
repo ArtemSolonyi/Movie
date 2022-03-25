@@ -1,5 +1,5 @@
 <% if resource.errors.any? %>
       <% resource.errors.full_messages.each do |message| %>
-       <div class="btn-warning"><%= message %></div>
+       <div class="warning-form  alert-warning"><%= message %></div>
       <% end %>
 <% end %>
