@@ -4,6 +4,7 @@ import {Controller} from "@hotwired/stimulus"
 export default class extends Controller {
     greet() {
         console.log('trtr')
+
         $.ajax({
             url: $("#movie_path").val(),
             beforeSend: function (xhr) {
