@@ -1,17 +1,8 @@
 require "rails_helper"
 RSpec.feature "Admin can" do
-  puts Category.all
-  user = User.find_by(email: "my@mail.com")
-  before do
-    puts Category.all
-  end
-  scenario "click to login link" do
-    visit '/'
-    click_link "Log in"
-    expect(page).to have_button "Log in"
-  end
 
   scenario "fill fields to login" do
+    FactoryBot.create(:user)
     visit '/users/sign_in'
     fill_in 'user[email]', :with => "my@mail.com"
     fill_in 'user[password]', :with => "Lemon123"
@@ -20,20 +11,21 @@ RSpec.feature "Admin can" do
   end
 
   scenario "click to link for Add movie" do
-    login_as(user)
+    login_as(FactoryBot.create(:user))
     visit root_path
     expect(page).to have_link("+ Add Movie")
   end
 
   scenario "visit add movie panel" do
-    login_as(user)
-    visit '/movies/new'
+    login_as(FactoryBot.create(:user))
+    visit new_movie_path
     expect(page).to have_content "New movie"
   end
   scenario "add movie" do
-    login_as(user)
+    login_as(FactoryBot.create(:user))
+    Category.destroy_all
     Category.create!(name: 'Anime')
-    visit '/movies/new'
+    visit new_movie_path
     fill_in "movie[title]", :with => "SpiderMan"
     fill_in "movie[text]", :with => "Description Movie"
     select "Anime", from: "movie_category_id"
@@ -42,8 +34,8 @@ RSpec.feature "Admin can" do
     expect(page).to have_content "Movie was successfully created."
   end
   scenario "back to movies" do
-    login_as(user)
-    visit '/movies/new'
+    login_as(FactoryBot.create(:user))
+    visit new_movie_path
     click_link "Back to movies"
     expect(page).to have_link "MoviesCenter"
   end

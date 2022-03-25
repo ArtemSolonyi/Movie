@@ -37,16 +37,19 @@
               <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control input_user", placeholder: "password confirmation" %>
+
+          </div>
+          <div class="btn-warning warning-form">
+
           </div>
           <div class="form-group">
+
             <div class="custom-control custom-checkbox">
               <div class="d-flex justify-content-center mt-3 login_container">
               </div>
             </div>
           </div>
-          <div class="d-flex justify-content-center mt-3 login_container">
 
-              </div>
             <%= f.submit "Sign up", class: "btn login_btn" %>
           </div>
           <div><%= link_to 'Log in', new_user_session_path, class: "link-login" %></div>

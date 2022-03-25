@@ -14,7 +14,7 @@
       <li class="nav-item">
             <li class="nav-item">
               <a class="nav-link">
-                <%= form.collection_select :id, @categories, :id, :name, { selected: params[:id] } %>
+                <%= form.collection_select :id, @categories, :id, :name, { selected: params[:id] },id:"movie_category_id"%>
                 <%= form.submit 'Switch', class: "btn btn-primary" %>
           <% end %>
         </a>
