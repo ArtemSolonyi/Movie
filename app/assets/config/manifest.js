@@ -5,6 +5,6 @@
 //= link styles.css
 const environment = require('./environment')
 
-environment.config.merge({ devtool: 'source-map' }) // or whatever type you want
+environment.config.merge({devtool: 'source-map'}) // or whatever type you want
 
 module.exports = environment.toWebpackConfig()

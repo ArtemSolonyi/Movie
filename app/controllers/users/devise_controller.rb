@@ -12,6 +12,7 @@ class Users::DeviseController < ApplicationController
       end
     end
   end
+
   self.responder = Responder
   respond_to :html, :turbo_stream
 end

@@ -19,12 +19,12 @@ RSpec.feature "Registred User can" do
     Category.destroy_all
     User.destroy_all
     Rating.destroy_all
-    FactoryBot.create(:movie,title:"SpiderMan",url:"0_movie.jpeg")
+    FactoryBot.create(:movie, title: "SpiderMan", url: "0_movie.jpeg")
     login_as(FactoryBot.create(:user, email: "random@mail.com", password: "random123", password_confirmation: "random123"))
     Capybara.ignore_hidden_elements = true
   end
 
-  scenario "set rating from user" , :js => true do
+  scenario "set rating from user", :js => true do
     visit movies_path
     click_link "SpiderMan"
     choose('6', allow_label_click: true)

@@ -80,10 +80,10 @@ RSpec.feature "Admin can" do
     fill_in "movie[title]", :with => "NewSpiderMan"
     click_button "Create Movie"
     expect(page).to have_content "Text can't be blank\nUrl can't be blank"
-    fill_in "movie[text]",:with=>"newText"
+    fill_in "movie[text]", :with => "newText"
     click_button "Create Movie"
     expect(page).to have_content "Url can't be blank"
-    fill_in "movie[url]",:with=>"0_movie.jpeg"
+    fill_in "movie[url]", :with => "0_movie.jpeg"
     click_button "Create Movie"
     expect(page).to have_content "Movie was successfully created."
   end
