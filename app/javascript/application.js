@@ -5,4 +5,5 @@ import "controllers"
 //= require jquery
 //=require turbolinks
 //=require controllers/rating_controller.js
+//=require controllers/ratings_controller.js
 //= require_tree .

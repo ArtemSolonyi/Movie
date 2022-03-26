@@ -5,6 +5,14 @@
         <div class="col-auto">
           <%= render movie %>
           <%= link_to movie.title, movie, class: 'link_to' %><br>
+          <div id="stars" class="form-stars-multi" data-controller="ratings" data-ratings-my-value="<%= movie_path movie %>/rating" data-action="input->ratings#greet">
+            <div class="ratings_multi <% movie.title %>">
+              <% 10.downto(1) do |i| %>
+                <input type="radio" name="ratings_multi" value="<%= i %>" id="<%= i %> <%=movie.title%>">
+                <label for="<%= i %> <%=movie.title%>">☆</label>
+              <% end %>
+            </div>
+          </div>
         </div>
       <% end %>
     </div>

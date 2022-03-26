@@ -203,3 +203,51 @@ html {
 .warning-form {
     font-size:11px;
 }
+.ratings_multi {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding-right: 20px;
+
+}
+
+.ratings_multi > input {
+    display: none
+}
+
+.ratings_multi > label {
+    position: relative;
+    width: 0.6em;
+    font-size: 1.5vw;
+    color: #564bc2;
+    cursor: pointer;
+    padding-right: 25%;
+}
+
+.ratings_multi > label::before {
+    content: "\2605";
+    position: absolute;
+    padding-right: 0px;
+    opacity: 0
+}
+
+.ratings_multi > label:hover:before,
+.ratings_multi > label:hover ~ label:before {
+    opacity: 1 !important
+}
+
+.ratings_multi > input:checked ~ label:before {
+    opacity: 1
+}
+
+.ratings_multi:hover > input:checked ~ label:before {
+    opacity: 0.4
+}
+
+.form-stars-multi {
+    margin-left:30%;
+    position: relative;
+    font-size:20px;
+    padding-right: 15%;
+
+}

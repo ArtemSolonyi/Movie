@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
     @category = Category.find_by(id: params[:id])
     @categories = [Category.new(name: 'All categories')] + Category.all
     @movies = (@category&.movies || Movie.all).paginate(page: params[:page], per_page: 6)
+
   end
 
   def show

@@ -5,6 +5,7 @@
     "@rails/webpacker": "5.4.3",
     "electron-to-chromium": "^1.4.86",
     "node-releases": "^2.0.2",
+    "stimulus-content-loader": "^4.0.0",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },
