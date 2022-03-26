@@ -1,24 +1,58 @@
-# README
+# Welcome to my test task
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Tools versions
 
-Things you may want to cover:
 
-* Ruby version
+**Ruby** version 3.0.3
 
-* System dependencies
+**Rails** version 7.0.2.3
 
-* Configuration
+## Task requirements
+- Movie: Title, Text, Ratings, Category
 
-* Database creation
+- Rating system from 1-10 available to registered users
 
-* Database initialization
+- The home page that shows all movies and the ability to filter movies by categories in url Friendly_id
 
-* How to run the test suite
+- Movie Details Page that shows the average rating
 
-* Services (job queues, cache servers, search engines, etc.)
+- From the Home page, it is possible to provide a quick star rating without reloading a page.
 
-* Deployment instructions
+- Admin Interface to manage movies (CRUD)
 
-* ...
+- Pagination of Movies on Home Page
+
+- Deploy an application to cloud servers like a Heroku or DigitalOcean
+
+- Provide test coverage for the app using RSpec or TDD
+
+- Use bootstrap or similar for the UI
+
+
+ 
+ ## Database 
+ production pg 
+ 
+ development sqlite3
+ 
+## To run the test suite 
+
+"bundler exec rspec"
+
+ ## External Gems
+ 
+ gem 'friendly_id', '~> 5.4.0'
+ 
+ gem 'will_paginate'
+ 
+ gem 'will_paginate-bootstrap4'
+ 
+ gem "factory_bot_rails"
+ 
+ gem 'shoulda-matchers'
+ 
+ ## Project is deployed to
+
+ Heroku: https://safe-sea-96714.herokuapp.com
+
+
