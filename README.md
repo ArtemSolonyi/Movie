@@ -1,6 +1,6 @@
 # Welcome to my test task
 
-## Configure
+## Tools versions
 
 
 **Ruby** version 3.0.3
@@ -39,7 +39,7 @@
 
 "bundler exec rspec"
 
- ## Setup Gems Manually:
+ ## External Gems
  
  gem 'friendly_id', '~> 5.4.0'
  
@@ -51,7 +51,7 @@
  
  gem 'shoulda-matchers'
  
- ## Deploy project 
+ ## Project is deployed to
 
  Heroku: https://safe-sea-96714.herokuapp.com
 
