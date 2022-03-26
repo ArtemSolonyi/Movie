@@ -13,9 +13,11 @@ RSpec.feature "Admin can" do
 
   scenario "click to link for Add movie" do
     User.delete_all
+    Movie.destroy_all
+    FactoryBot.create(:movie)
     login_as(FactoryBot.create(:user))
 
-    visit root_path
+    visit movies_path
     expect(page).to have_link("+ Add Movie")
   end
 
@@ -40,6 +42,7 @@ RSpec.feature "Admin can" do
   end
   scenario "back to movies" do
     User.delete_all
+    Movie.destroy_all
     login_as(FactoryBot.create(:user))
     visit new_movie_path
     click_link "Back to movies"
